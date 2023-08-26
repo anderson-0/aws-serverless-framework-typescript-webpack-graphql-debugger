@@ -1,0 +1,37 @@
+service: aws-webpack-typescript-template
+frameworkVersion: "3"
+useDotenv: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-webpack
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+    packager: yarn
+  # serverless-offline:
+  #   useChildProcesses: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: us-east-1
+  versionFunctions: false
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  listServers:
+    handler: src/servers/list.handler
+    events:
+      - http:
+          path: servers
+          method: get
+          cors: true
+
+package:
+  # include:
+  # - prisma/schema.prisma
+  individually: true

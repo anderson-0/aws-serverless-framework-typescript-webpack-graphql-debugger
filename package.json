@@ -1,0 +1,49 @@
+{
+  "name": "aws-serverless-framework-typescript-webpack-graphql-debugger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/anderson-0/aws-serverless-framework-typescript-webpack-graphql-debugger.git",
+  "author": "Anderson da Silva <anderson.consultant.it@outlook.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "scripts": {
+    "dev": "serverless offline ",
+    "debug": "set SLS_DEBUG=* && node --inspect node_modules/serverless/bin/serverless offline -s dev",
+    "build": "tsc",
+    "start": "npm run build && sls offline",
+    "deploy": "npm run build && serverless deploy",
+    "destroy": "serverless remove"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.6.0",
+    "@as-integrations/aws-lambda": "^2.0.1",
+    "@middy/core": "^4.2.8",
+    "@middy/http-json-body-parser": "^4.2.8",
+    "apollo-server-lambda": "^3.12.0",
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1351.0",
+    "axios": "^1.3.5",
+    "date-fns": "^2.29.3",
+    "graphql": "^16.6.0",
+    "jsonwebtoken": "^9.0.0",
+    "serverless": "^3.22.0",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-offline": "^10.0.2",
+    "serverless-plugin-typescript": "^2.1.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@serverless/typescript": "^3.21.0",
+    "@types/aws-lambda": "^8.10.103",
+    "@types/uuid": "^8.3.4",
+    "copy-webpack-plugin": "^11.0.0",
+    "serverless-webpack": "^5.9.1",
+    "serverless-webpack-prisma": "^1.1.1",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
